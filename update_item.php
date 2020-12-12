@@ -16,4 +16,5 @@
     else{
         header("location: view_item.php?msg=editFail");
     }
+    include_once 'refuse_connection.php';
 ?>

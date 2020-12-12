@@ -18,4 +18,5 @@
     else{
         header("location: view_supplier.php?msg=fail");
     }
+    include_once 'refuse_connection.php';
 ?>

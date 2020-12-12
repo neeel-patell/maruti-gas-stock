@@ -10,7 +10,7 @@
     }
     $id = $_GET['id'];
     $conn = getConn();
-    $item = $conn->query("SELECT name,description from item where id=$id");
+    $item = $conn->query("SELECT id,name,description from item where id=$id");
     $item = $item->fetch_array();
 ?>
 <!DOCTYPE html>
@@ -30,6 +30,7 @@
     	<div class="container-fluid row mt-5" style="min-height: 92vh">
     		<div class="col-sm-3"></div>
     		<form action="update_item.php" method="post" class="col-sm-6" data-parsley-validate>
+    			<input type="hidden" name="id" value="<?php echo $item['id']; ?>">
     			<div class="card p-3">
     				<h4 class="text-center mb-3">Edit Item Details</h4>
     				<hr class="bg-primary" size="5px">
@@ -54,4 +55,5 @@
     	<script src="js/parsley.js"></script>
     	<script src="js/font-awesome.js"></script>
     </body>
+    <?php include_once 'refuse_connection.php'; ?>
 </html>

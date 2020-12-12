@@ -10,4 +10,5 @@
     else{
         header("location: view_item.php?msg=delFail");
     }
+    include_once 'refuse_connection.php';
 ?>

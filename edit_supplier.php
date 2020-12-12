@@ -58,4 +58,5 @@
     	<script src="js/parsley.js"></script>
     	<script src="js/font-awesome.js"></script>
     </body>
+    <?php include_once 'refuse_connection.php'; ?>
 </html>
