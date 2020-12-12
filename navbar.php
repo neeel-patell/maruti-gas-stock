@@ -3,7 +3,9 @@
 		<div class="navbar">&nbsp;&nbsp;	
 			<a class="btn btn-light" href="index.php"><i class="fas fa-home"></i> Home</a>&nbsp;&nbsp;
 			<a class="btn btn-light" href="add_supplier.php"><i class="fas fa-truck"></i> Add Supplier</a>&nbsp;&nbsp;
-			<a class="btn btn-light" href="view_supplier.php"><i class="fas fa-list"></i> View Supplier</a>&nbsp;&nbsp;
+			<a class="btn btn-light" href="view_supplier.php"><i class="fas fa-list"></i> View Suppliers</a>&nbsp;&nbsp;
+			<a class="btn btn-light" href="add_item.php"><i class="fas fa-satellite"></i> Add Item</a>&nbsp;&nbsp;
+			<a class="btn btn-light" href="view_item.php"><i class="fas fa-list-alt"></i> View Items</a>&nbsp;&nbsp;
 			<a class="btn btn-light" href="add_stock.php"><i class="fas fa-plus-circle"></i> Add Stock</a>&nbsp;&nbsp;
 			<a class="btn btn-light" href="remove_stock.php"><i class="fas fa-minus-circle"></i> Remove Stock</a>&nbsp;&nbsp;
 			<a class="btn btn-light" href="make_kit.php"><i class="fas fa-align-justify"></i> Make Kit</a>&nbsp;&nbsp;
