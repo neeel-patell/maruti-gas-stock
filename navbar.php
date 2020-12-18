@@ -1,16 +1,5 @@
 <nav class="navbar bg-dark m-0 p-0" style="min-height: 3vh">
-	<div class="container-fluid m-0 p-0">
-		<div class="navbar">&nbsp;&nbsp;	
-			<a class="btn btn-light" href="remove_stock.php"><i class="fas fa-minus-circle"></i> Remove Stock</a>&nbsp;&nbsp;
-			<a class="btn btn-light" href="make_kit.php"><i class="fas fa-align-justify"></i> Make Kit</a>&nbsp;&nbsp;
-			<a class="btn btn-light" href="make_kit.php"><i class="far fa-share-square"></i> Send Kit</a>&nbsp;&nbsp;
-			<a class="btn btn-light" href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>&nbsp;&nbsp;
-		</div>
-	</div>
-	
-	
-	
-	<div class="container-fluid m-0 mt-5 bg-primary p-0">
+	<div class="container-fluid m-0 bg-primary p-0">
 		<div class="navbar">&nbsp;&nbsp;	
 			<a class="btn btn-light" href="index.php"><i class="fas fa-home"></i> Home</a>&nbsp;&nbsp;
 			<div class="dropdown">
@@ -42,13 +31,23 @@
            	</div>
            	<div class="dropdown">
     			<a class="btn btn-light dropdown-toggle" role="button" id="incoming_dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-arrow-up"></i> Manage Outgoing Stock
+                    <i class="fab fa-uikit"></i> Manage Kit
                 </a>&nbsp;&nbsp;
                 <ul class="dropdown-menu" aria-labelledby="incoming_dropdown">
-                    <li><a class="dropdown-item" href="add_stock.php"><i class="fas fa-plus-circle"></i> Add Stock</a></li>
+                    <li><a class="dropdown-item" href="add_kit.php"><i class="fas fa-plus-circle"></i> Add Kit</a></li>
+                    <li><a class="dropdown-item" href="view_kit.php"><i class="fas fa-bars"></i> View Kit</a></li>
                 </ul>
            	</div>
-     		<a class="btn btn-light" href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>&nbsp;&nbsp;
+           	<div class="dropdown">
+    			<a class="btn btn-light dropdown-toggle" role="button" id="incoming_dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-users"></i> Manage Customer
+                </a>&nbsp;&nbsp;
+                <ul class="dropdown-menu" aria-labelledby="incoming_dropdown">
+                    <li><a class="dropdown-item" href="add_customer.php"><i class="fas fa-plus-circle"></i> Add Customer</a></li>
+                    <li><a class="dropdown-item" href="view_customer.php"><i class="fas fa-user-friends"></i> View Customer</a></li>
+                </ul>
+           	</div>
+           	<a class="btn btn-light" href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>&nbsp;&nbsp;
 		</div>
 	</div>
 </nav>
