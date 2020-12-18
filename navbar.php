@@ -1,5 +1,5 @@
 <nav class="navbar bg-dark m-0 p-0" style="min-height: 3vh">
-	<div class="container-fluid m-0 bg-primary p-0">
+	<div class="container-fluid m-0 p-0">
 		<div class="navbar">&nbsp;&nbsp;	
 			<a class="btn btn-light" href="index.php"><i class="fas fa-home"></i> Home</a>&nbsp;&nbsp;
 			<div class="dropdown">

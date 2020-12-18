@@ -2,13 +2,12 @@
     include_once 'connection.php';
     $conn = getConn();
     
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+    $name = $_POST['name'];
     $mobile = $_POST['mobile'];
     $email = $_POST['email'];
     $type = $_POST['type'];
     
-    $query = "INSERT INTO customer(first_name,last_name,mobile,email,type) VALUES('$first_name','$last_name',$mobile,'$email',$type)";
+    $query = "INSERT INTO customer(name,mobile,email,type) VALUES('$name',$mobile,'$email',$type)";
     if($conn->query($query)){
         include_once 'refuse_connection.php';
         header("location: add_customer.php?msg=pass");

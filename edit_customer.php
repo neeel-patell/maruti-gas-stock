@@ -6,8 +6,8 @@
     }
     $id = $_GET['id'];
     $conn = getConn();
-    $item = $conn->query("SELECT id,name,description from item where id=$id");
-    $item = $item->fetch_array();
+    $customer = $conn->query("SELECT name,mobile,email from customer where id=$id");
+    $customer = $customer->fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
         <link href="css/font-awesome.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="UTF-8">
-        <title>Add Item</title>
+        <title>Add Customer</title>
     </head>
     <body>
     	<header class="container-fluid p-4 h4 bg-warning text-black font-monospace m-0" style="min-height: 5vh"><i class="fas fa-car"></i> Maruti Gas Service - Stock Management <i class="fas fa-layer-group"></i></header>
@@ -25,22 +25,26 @@
     	
     	<div class="container-fluid row mt-5" style="min-height: 92vh">
     		<div class="col-sm-3"></div>
-    		<form action="update_item.php" method="post" class="col-sm-6" data-parsley-validate>
-    			<input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+    		<form action="update_customer.php" method="post" class="col-sm-6" data-parsley-validate>
+    			<input type="hidden" name="id" value="<?php echo $id; ?>">
     			<div class="card p-3">
-    				<h4 class="text-center mb-3">Edit Item Details</h4>
+    				<h4 class="text-center mb-3">Edit Customer Details</h4>
+    				
     				<hr class="bg-primary" size="5px">
         			<div class="form-group p-3">
-        				<label>Item Name : </label>
-        				<input type="text" maxlength="50" name="name" id="name" value="<?php echo $item['name']; ?>" class="form-control mt-1" placeholder="Enter Item Name" required>
+        				<label>Name : </label>
+        				<input type="text" value="<?php echo $customer['name']; ?>" maxlength="50" name="name" id="name" class="form-control mt-1" placeholder="Enter First Name" required>
         			</div>
         			<div class="form-group p-3">
-        				<label>Description : </label>
-        				<input type="text" maxlength="150" name="description" id="description" value='<?php echo $item['description']; ?>' class="form-control mt-1" placeholder="Enter item description (optional)">
+        				<label>Mobile : </label>
+        				<input type="text" value="<?php echo $customer['mobile']; ?>" maxlength="10" minlength="10" name="mobile" id="mobile" class="form-control mt-1" data-parsley-type="digits" placeholder="Enter Contact Number" required>
         			</div>
-        			
+        			<div class="form-group p-3">
+        				<label>Email : </label>
+        				<input type="email" value="<?php echo $customer['email']; ?>" maxlength="256" name="email" id="email" class="form-control mt-1" placeholder="Enter Email address (Optional)">
+        			</div>
         			<div class="container p-3 text-center">
-        				<button class="btn btn-success text-uppercase" type="submit">Edit Details <i class="fas fa-edit"></i></button>
+        				<button class="btn btn-success text-uppercase" type="submit">Edit Customer <i class="fas fa-pencil-alt"></i></button>
         			</div>
     			</div>
     		</form>
@@ -51,5 +55,4 @@
     	<script src="js/parsley.js"></script>
     	<script src="js/font-awesome.js"></script>
     </body>
-    <?php include_once 'refuse_connection.php'; ?>
 </html>
