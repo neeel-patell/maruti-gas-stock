@@ -6,7 +6,7 @@
         $msg = $_GET['msg'];
     }
     $conn = getConn();
-    $suppliers = $conn->query("SELECT id,name,description from item order by name");
+    $suppliers = $conn->query("SELECT id,name,description,current_stock from item order by current_stock");
     $srno = 1;
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
 			<div class="alert alert-danger h6 text-center">Item details has not deleted while it's associated with stock exchange !...</div>
 			<?php } ?>
     		
-    		<h3 class="text-center">Supplier List</h3>
+    		<h3 class="text-center">Item List with stock</h3>
     		<hr class="bg-primary">
     		<div class="table-responsive">
     			<table class="table table-bordered text-center">
@@ -44,6 +44,7 @@
         					<th>Sr No.</th>
         					<th>Name</th>
         					<th>Description</th>
+        					<th>Quantity</th>
         					<th>Action</th>
         				</tr>
     				</thead>
@@ -54,6 +55,7 @@
     						<td><?php echo $srno++; ?></td>
     						<td><?php echo $row['name']; ?></td>
     						<td><?php if($row['description'] != ""){ echo $row['description']; } else { echo " - "; } ?></td>
+    						<td><?php echo $row['current_stock']; ?></td>
     						<td>
     							<button class="btn btn-link p-0 text-decoration-none" onclick='location.href="edit_item.php?id=<?php echo $row['id']; ?>";'>Edit <i class="fas fa-edit"></i></button> |
     							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to delete \"<?php echo $row['name']; ?>\" ?")){ location.href="delete_item.php?id=<?php echo $row['id']; ?>";}'>Delete <i class="fas fa-trash-alt"></i></button>

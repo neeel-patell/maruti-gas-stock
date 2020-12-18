@@ -40,7 +40,10 @@
         				<label>Description : </label>
         				<input type="text" maxlength="150" name="description" id="description" class="form-control mt-1" placeholder="Enter item description (optional)">
         			</div>
-        			
+        			<div class="form-group p-3">
+        				<label>Current Stock : </label>
+        				<input type="text" maxlength="6" name="current" id="current" data-parsley-type="number" value="0" class="form-control mt-1" placeholder="Enter item current stocks">
+        			</div>
         			<div class="container p-3 text-center">
         				<button class="btn btn-success text-uppercase" type="submit">Add new Item <i class="fas fa-satellite"></i></button>
         			</div>
