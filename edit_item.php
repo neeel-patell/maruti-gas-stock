@@ -30,11 +30,11 @@
     			<div class="card p-3">
     				<h4 class="text-center mb-3">Edit Item Details</h4>
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Item Name : </label>
         				<input type="text" maxlength="50" name="name" id="name" value="<?php echo $item['name']; ?>" class="form-control mt-1" placeholder="Enter Item Name" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Description : </label>
         				<input type="text" maxlength="150" name="description" id="description" value='<?php echo $item['description']; ?>' class="form-control mt-1" placeholder="Enter item description (optional)">
         			</div>

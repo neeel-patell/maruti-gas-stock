@@ -34,15 +34,15 @@
     			<div class="card p-3">
     				<h4 class="text-center mb-3">Edit Supplier Details</h4>
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Company Name : </label>
         				<input type="text" maxlength="50" name="name" id="name" class="form-control mt-1" value="<?php echo $supplier_detail['name']; ?>" placeholder="Enter Company Name" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Address : </label>
         				<input type="text" maxlength="100" name="address" id="address" class="form-control mt-1" value="<?php echo $supplier_detail['address']; ?>" placeholder="Enter Supplier Address">
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Contact No : </label>
         				<input type="text" maxlength="10" minlength="10" name="contact" id="contact" class="form-control mt-1" value="<?php echo $supplier_detail['contact']; ?>" placeholder="Enter Supplier Contact Number" data-parsley-type="number" data-parsley-error-message="Please Enter valid mobile number">
         			</div>

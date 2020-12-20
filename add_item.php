@@ -32,15 +32,15 @@
     				<?php } ?>
     				
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Item Name : </label>
         				<input type="text" maxlength="50" name="name" id="name" class="form-control mt-1" placeholder="Enter Item Name" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Description : </label>
         				<input type="text" maxlength="150" name="description" id="description" class="form-control mt-1" placeholder="Enter item description (optional)">
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Current Stock : </label>
         				<input type="text" maxlength="6" name="current" id="current" data-parsley-type="number" value="0" class="form-control mt-1" placeholder="Enter item current stocks">
         			</div>

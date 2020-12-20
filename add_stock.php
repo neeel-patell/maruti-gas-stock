@@ -38,7 +38,7 @@
     				<hr class="bg-primary" size="5px">
         			<div class="card p-3">
         				<h6>Supplier Details</h6>
-        				<div class="form-group p-3">
+        				<div class="form-group p-1">
             				<label>Select Supplier : </label>
             				<input list="supplier_list" name="supplier" id="supplier" class="form-control" placeholder="Enter / Select Supplier" required>
             				<datalist id="supplier_list">
@@ -49,7 +49,7 @@
             					
             				</datalist>
             			</div>
-            			<div class="form-group p-3">
+            			<div class="form-group p-1">
             				<label>Date : </label>
             				<input type="date" class="form-control" name="stock_date" id="stock_date">
             			</div>
@@ -62,14 +62,14 @@
             		<div class="card p-3 mt-5">
             			<h6>Incoming Item Details</h6>
                 		<div id="items_div">
-            				<div class="input-group p-3">
+            				<div class="input-group p-1">
                 				<input list="item_list" class="form-control w-50" name="item1" id="item1" placeholder="Enter / Select Item" required>
                 				<input type="number" class="form-control w-25" name="quantity1" id="quantity1" min="1" max="99999" data-parsley-error-message="PLease Enter valid quantity(in range of 1 - 10000)" placeholder="Quantity" required>
                 				<input type="text" class="form-control w-25" name="price1" id="price1" placeholder="Price" maxlength="9" data-parsley-error-message="PLease Enter valid price amount" data-parsley-type="number" required>
                 			</div>
             			</div>
             			<div>
-            				<button type="button" class="btn btn-outline-primary" onclick="add_item()"><i class="fas fa-plus"></i> Add Item</button>
+            				<button type="button" class="btn btn-outline-primary mt-2" onclick="add_item()"><i class="fas fa-plus"></i> Add Item</button>
             			</div>
         			</div>
         			<div class="container p-3 text-center">
@@ -89,7 +89,7 @@
     			var items_div = document.getElementById('items_div');
     			
     			var input_group = document.createElement('div');
-    			input_group.setAttribute('class','input-group p-3');
+    			input_group.setAttribute('class','input-group p-1');
     			
     			items_div.appendChild(input_group);
     			var temp =  '<input list="item_list" class="form-control w-50" name="item'+i+'" id="item'+i+'" placeholder="Enter / Select Item" required>'+
@@ -98,11 +98,6 @@
                 i = i + 1;
                 input_group.innerHTML = temp;
     		}
-    		var n =  new Date();
-            var y = n.getFullYear();
-            var m = n.getMonth() + 1;
-            var d = n.getDate();
-            document.getElementById("stock_date").value = y+"-"+m+"-"+d;
     	</script>
     </body>
 </html>

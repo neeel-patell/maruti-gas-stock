@@ -32,21 +32,21 @@
     				<?php } ?>
     				
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Name : </label>
         				<input type="text" maxlength="50" name="name" id="name" class="form-control mt-1" placeholder="Enter First Name" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Mobile : </label>
         				<input type="text" maxlength="10" minlength="10" name="mobile" id="mobile" class="form-control mt-1" data-parsley-type="digits" placeholder="Enter Contact Number" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Email : </label>
         				<input type="email" maxlength="256" name="email" id="email" class="form-control mt-1" placeholder="Enter Email address (Optional)">
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Customer Type : </label>
-        				<select class="form-select" name="type" required>
+        				<select class="form-select mt-1" name="type" required>
         					<option value="0">Customer</option>
         					<option value="1">Dealer / Wholeseller</option>
         				</select>

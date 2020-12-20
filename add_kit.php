@@ -40,20 +40,20 @@
     				<?php } ?>
     				
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1 mb-3">
         				<label>Kit Name : </label>
         				<input type="text" maxlength="50" name="name" id="name" class="form-control mt-1" placeholder="Enter Kit Name" required>
         			</div>
-        			<div class="card p-2">
+        			<div class="card p-3">
 						<h6>Item details</h6>    
 						<div id="items_div">
-            				<div class="input-group p-3">
+            				<div class="input-group p-1">
                 				<input list="item_list" class="form-control w-50" name="item1" id="item1" placeholder="Enter / Select Item" required>
                 				<input type="number" class="form-control w-25" name="quantity1" id="quantity1" min="1" max="99999" data-parsley-error-message="PLease Enter valid quantity(in range of 1 - 10000)" placeholder="Quantity" required>
                 			</div>
             			</div>
             			<div>
-            				<button type="button" class="btn btn-outline-primary" onclick="add_item()"><i class="fas fa-plus"></i> Add Item</button>
+            				<button type="button" class="btn btn-outline-primary mt-2" onclick="add_item()"><i class="fas fa-plus"></i> Add Item</button>
             			</div>
         			</div>
         			<div class="container p-3 text-center">
@@ -73,7 +73,7 @@
     			var items_div = document.getElementById('items_div');
     			
     			var input_group = document.createElement('div');
-    			input_group.setAttribute('class','input-group p-3');
+    			input_group.setAttribute('class','input-group p-1');
     			
     			items_div.appendChild(input_group);
     			var temp =  '<input list="item_list" class="form-control w-50" name="item'+i+'" id="item'+i+'" placeholder="Enter / Select Item" required>'+

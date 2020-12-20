@@ -31,15 +31,15 @@
     				<h4 class="text-center mb-3">Edit Customer Details</h4>
     				
     				<hr class="bg-primary" size="5px">
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Name : </label>
         				<input type="text" value="<?php echo $customer['name']; ?>" maxlength="50" name="name" id="name" class="form-control mt-1" placeholder="Enter First Name" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Mobile : </label>
         				<input type="text" value="<?php echo $customer['mobile']; ?>" maxlength="10" minlength="10" name="mobile" id="mobile" class="form-control mt-1" data-parsley-type="digits" placeholder="Enter Contact Number" required>
         			</div>
-        			<div class="form-group p-3">
+        			<div class="form-group p-1">
         				<label>Email : </label>
         				<input type="email" value="<?php echo $customer['email']; ?>" maxlength="256" name="email" id="email" class="form-control mt-1" placeholder="Enter Email address (Optional)">
         			</div>
