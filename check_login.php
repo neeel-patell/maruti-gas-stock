@@ -5,4 +5,7 @@
             header("location: login.php?msg=la"); // if not logged in then redirecting back to login page
         }
     }
+    else{
+        header("location: login.php?msg=la"); // if not logged in then redirecting back to login page
+    }
 ?>
