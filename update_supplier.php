@@ -13,10 +13,11 @@
               contact = $contact
               where id = $id";
     if($conn->query($query)){
+        require_once 'refuse_connection.php';
         header("location: view_supplier.php?msg=pass");
     }
     else{
+        require_once 'refuse_connection.php';
         header("location: view_supplier.php?msg=fail");
     }
-    include_once 'refuse_connection.php';
 ?>

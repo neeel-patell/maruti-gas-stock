@@ -9,11 +9,11 @@
         
     $query = "INSERT INTO item(name,description,current_stock) VALUES('$name','$description',$current)";
     if($conn->query($query)){
+        require_once 'refuse_connection.php';
         header("location: add_item.php?msg=pass");
     }
     else{
-        echo $conn->error;
+        require_once 'refuse_connection.php';
         header("location: add_item.php?msg=fail");
     }
-    include_once 'refuse_connection.php';
 ?>

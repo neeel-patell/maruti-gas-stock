@@ -54,5 +54,6 @@
     	<script src="js/jquery.js"></script>
     	<script src="js/parsley.js"></script>
     	<script src="js/font-awesome.js"></script>
+    	<?php require_once 'refuse_connection.php'; ?>
     </body>
 </html>

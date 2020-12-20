@@ -41,12 +41,12 @@
     }
     
     if($query_flag == 0){
+        require_once 'refuse_connection.php';
         header("add_stock.php?msg=fail");
     }
     else{
         $conn->commit();
+        require_once 'refuse_connection.php';
         header("location: add_stock.php?msg=pass");
     }
-    
-    require_once 'refuse_connection.php';
 ?>

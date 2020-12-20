@@ -13,10 +13,11 @@
               email = '$email'
               where id = $id";
     if($conn->query($query)){
+        require_once 'refuse_connection.php';
         header("location: view_customer.php?msg=editPass");
     }
     else{
+        require_once 'refuse_connection.php';
         header("location: view_customer.php?msg=editFail");
     }
-    include_once 'refuse_connection.php';
 ?>

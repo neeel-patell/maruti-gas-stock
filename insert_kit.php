@@ -37,6 +37,7 @@
     }
     else{
         $conn->commit();
+        require_once 'refuse_connection.php';
         header("location: add_kit.php?msg=pass");
     }
 ?>

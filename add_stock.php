@@ -100,4 +100,5 @@
     		}
     	</script>
     </body>
+    <?php require_once 'refuse_connection.php'; ?>
 </html>

@@ -8,10 +8,11 @@
     
     $query = "INSERT INTO supplier(name,address,contact) VALUES('$name','$address',$contact)";
     if($conn->query($query)){
+        require_once 'refuse_connection.php';
         header("location: add_supplier.php?msg=pass");
     }
     else{
+        require_once 'refuse_connection.php';
         header("location: add_supplier.php?msg=fail");
     }
-    include_once 'refuse_connection.php';
 ?>

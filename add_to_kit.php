@@ -5,7 +5,6 @@
     
     $kit_id = $_POST['kit_id'];
     $quantity = $_POST['quantity'];
-    $price = $_POST['price'];
     
     preg_match("/\[(\d+)\]/",$_POST['item'],$output);
     $item = $output[1];
