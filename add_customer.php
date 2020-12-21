@@ -47,8 +47,9 @@
         			<div class="form-group p-1">
         				<label>Customer Type : </label>
         				<select class="form-select mt-1" name="type" required>
-        					<option value="0">Customer</option>
-        					<option value="1">Dealer / Wholeseller</option>
+        					<option value="0">Retail</option>
+        					<option value="1">Wholesell</option>
+        					<option value="1">Fitman</option>
         				</select>
         			</div>
         			<div class="container p-3 text-center">

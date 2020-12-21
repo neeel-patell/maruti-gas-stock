@@ -9,10 +9,12 @@
         $search = $_GET['search'];
     }
     if(isset($_GET['type'])){
-        if($_GET['type'] == "dealer")
+        if($_GET['type'] == "wholesell")
             $type = 1;
-        else if($_GET['type'] == "customer")
+        else if($_GET['type'] == "retail")
             $type = 0;
+        else if($_GET['type'] == "fitman")
+                $type = 2;
         else
             $type = $_GET['type'];
     }
@@ -69,12 +71,25 @@
 			<div class="alert alert-danger h6 text-center">Customer details has not deleted while it's associated with stock exchange !...</div>
 			<?php } ?>
     		
-    		<h3 class="text-center"><?php echo $type == 0? "Customer" : "Dealer"; ?> List</h3>
+    		<h3 class="text-center">
+    		<?php
+        		if($type == 0){
+        		    echo "Retail Customer";
+        		}
+        		else if($type == 1){
+        		    echo "Wholeseller";
+        		}
+        		if($type == 2){
+        		    echo "Fitman";
+        		}
+    		?>
+    		List</h3>
     		<div class="row">
     			<div class="col-sm-4">
     				<select class="form-select" id="cust_type" onchange='location.href = "view_customer.php?search=<?php echo $search; ?>&type="+document.getElementById("cust_type").value'>		
-    					<option value="customer" <?php if($type == 0){ echo "selected"; } ?> >Customer</option>
-    					<option value="dealer" <?php if($type == 1){ echo "selected"; } ?> >Dealer</option>
+    					<option value="retail" <?php if($type == 0){ echo "selected"; } ?> >Retail</option>
+    					<option value="wholesell" <?php if($type == 1){ echo "selected"; } ?> >Wholesell</option>
+    					<option value="fitman" <?php if($type == 2){ echo "selected"; } ?> >Fitman</option>
     				</select>
     			</div>
     			<div class="col-sm-2"></div>
