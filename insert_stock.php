@@ -24,7 +24,7 @@
     if($conn->query($query)){
         $insert_id = $conn->insert_id;
         foreach($items as $arr){
-            $query = "INSERT INTO incoming_stock_item(incoming_stock_id,item_id,quantity,price) VALUES($insert_id,$arr[0],$arr[1],$arr[2])";
+            $query = "INSERT INTO incoming_stock_item(incoming_stock_id,item_id,quantity) VALUES($insert_id,$arr[0],$arr[1])";
             if($conn->query($query)){
                 $query = "UPDATE item set current_stock=current_stock+$arr[1] where id=$item";
                 if($conn->query($query) == false){

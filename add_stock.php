@@ -65,7 +65,6 @@
             				<div class="input-group p-1">
                 				<input list="item_list" class="form-control w-50" name="item1" id="item1" placeholder="Enter / Select Item" required>
                 				<input type="number" class="form-control w-25" name="quantity1" id="quantity1" min="1" max="99999" data-parsley-error-message="PLease Enter valid quantity(in range of 1 - 10000)" placeholder="Quantity" required>
-                				<input type="text" class="form-control w-25" name="price1" id="price1" placeholder="Price" maxlength="9" data-parsley-error-message="PLease Enter valid price amount" data-parsley-type="number" required>
                 			</div>
             			</div>
             			<div>
@@ -93,8 +92,7 @@
     			
     			items_div.appendChild(input_group);
     			var temp =  '<input list="item_list" class="form-control w-50" name="item'+i+'" id="item'+i+'" placeholder="Enter / Select Item" required>'+
-                			'<input type="number" class="form-control w-25" name="quantity'+i+'" id="quantity'+i+'" min="1" max="99999" data-parsley-error-message="PLease Enter valid quantity(in range of 1 - 10000)" placeholder="Quantity" required>'+
-                			'<input type="text" class="form-control w-25" name="price'+i+'" id="price'+i+'" maxlength="9" data-parsley-error-message="PLease Enter valid price amount" placeholder="Price" data-parsley-type="number" required>';
+                			'<input type="number" class="form-control w-25" name="quantity'+i+'" id="quantity'+i+'" min="1" max="99999" data-parsley-error-message="PLease Enter valid quantity(in range of 1 - 10000)" placeholder="Quantity" required>';
                 i = i + 1;
                 input_group.innerHTML = temp;
     		}

@@ -41,7 +41,6 @@
         $query .= " where `type` = $type";
     }
     $query .= " order by name";
-    echo $query;
     $customer = $conn->query($query);
     $srno = 1;
 ?>

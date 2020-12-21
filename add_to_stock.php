@@ -5,12 +5,11 @@
     
     $incoming_stock_id = $_POST['incoming_id'];
     $quantity = $_POST['quantity'];
-    $price = $_POST['price'];
     
     preg_match("/\[(\d+)\]/",$_POST['item'],$output);
     $item = $output[1];
     
-    $query = "INSERT INTO incoming_stock_item(incoming_stock_id,item_id,quantity,price) VALUES($incoming_stock_id,$item,$quantity,$price)";
+    $query = "INSERT INTO incoming_stock_item(incoming_stock_id,item_id,quantity) VALUES($incoming_stock_id,$item,$quantity)";
     if($conn->query($query)){
         $query = "UPDATE item set current_stock=current_stock+$quantity where id=$item";
         if($conn->query($query)){
