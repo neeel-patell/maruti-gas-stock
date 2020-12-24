@@ -16,7 +16,7 @@
     while(isset($_POST['item'.$i])){
         preg_match("/\[(\d+)\]/",$_POST['item'.$i],$output);
         $item = $output[1];
-        array_push($items, array($item,$_POST['quantity'.$i],$_POST['price'.$i]));
+        array_push($items, array($item,$_POST['quantity'.$i]));
         $i++;
     }
     

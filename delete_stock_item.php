@@ -9,7 +9,7 @@
     $incoming_stock_detail= $incoming_stock_detail->fetch_array();
     
     $query = "UPDATE item
-              SET current_stock = current_stock - ".$incoming_stock_detail['quantity'].
+              SET current_stock = current_stock + ".$incoming_stock_detail['quantity'].
               " where id=".$incoming_stock_detail['item_id'];
     
     if($conn->query($query)){

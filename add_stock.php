@@ -96,6 +96,11 @@
                 i = i + 1;
                 input_group.innerHTML = temp;
     		}
+    		var n =  new Date();
+            var y = n.getFullYear();
+            var m = n.getMonth() + 1;
+            var d = n.getDate();
+            document.getElementById("stock_date").value = y+"-"+m+"-"+d;
     	</script>
     </body>
     <?php require_once 'refuse_connection.php'; ?>

@@ -47,6 +47,15 @@
                     <li><a class="dropdown-item" href="view_customer.php"><i class="fas fa-user-friends"></i> View Customer</a></li>
                 </ul>
            	</div>
+           	<div class="dropdown">
+    			<a class="btn btn-light dropdown-toggle" role="button" id="incoming_dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-receipt"></i> Manage Bills
+                </a>&nbsp;&nbsp;
+                <ul class="dropdown-menu" aria-labelledby="incoming_dropdown">
+                    <li><a class="dropdown-item" href="sell_item.php"><i class="fas fa-plus-circle"></i> Add Bill</a></li>
+                    <li><a class="dropdown-item" href="view_bill.php"><i class="fas fa-list"></i> View Bill</a></li>
+                </ul>
+           	</div>
            	<a class="btn btn-light" href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>&nbsp;&nbsp;
 		</div>
 	</div>
