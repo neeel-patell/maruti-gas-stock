@@ -25,6 +25,12 @@
     $item_list = $conn->query("SELECT id,name FROM item ORDER BY name");
     $kit_list = $conn->query("SELECT id,name FROM kit ORDER BY name");
     $sr = 1;
+    
+    $replaced_items = $conn->query("SELECT id,item_id,quantity,replacement_date,dispatched FROM replaced_items where bill_id=$id");
+    
+    $transporter = $conn->query("SELECT transport_id,transported_by from bill_transporter where bill_id=$id");
+    $transporter_count = mysqli_num_rows($transporter);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,12 +64,44 @@
 			<div class="alert alert-success h6 text-center">Kit is Successfully added in a bill !...</div>
 			<?php }else if($msg == "kitAddFail"){ ?>
 			<div class="alert alert-danger h6 text-center">Kit is not added, please try again !...</div>
+			<?php }else if($msg == "replaceDone"){ ?>
+			<div class="alert alert-success h6 text-center">Replacement is Successfully done as per bill !...</div>
+			<?php }else if($msg == "replaceFail"){ ?>
+			<div class="alert alert-danger h6 text-center">Replacement is not added, please try again !...</div>
+			<?php }else if($msg == "statusChange"){ ?>
+			<div class="alert alert-success h6 text-center">Status is Successfully changed for Delivery !...</div>
+			<?php }else if($msg == "statusChangeFail"){ ?>
+			<div class="alert alert-danger h6 text-center">Status is not changed for Delivery, PLease try again !...</div>
+			<?php }else if($msg == "passTransport"){ ?>
+			<div class="alert alert-success h6 text-center">Transporter is Successfully set for Delivery !...</div>
+			<?php }else if($msg == "failTransport"){ ?>
+			<div class="alert alert-danger h6 text-center">Transporter is not set for Delivery, PLease try again !...</div>
 			<?php } ?>
     		
     		<h6>Invoice Number : <?php echo $id; ?></h6>
     		
     		<h6>Customer Name : <?php echo $customer['name']; ?></h6>
     		<h6>Date : <?php echo date_format(date_create($bill['purchase_date']),'dS M Y'); ?></h6>
+    		
+    		<?php if($customer['type'] == 1){ ?>
+    		<div>
+    			<span class="h6">Transported By :</span> 
+    			<?php if($transporter_count == 0){ ?>
+    				<form class="form-inline" method="post" action="insert_transporter.php">
+    					<input type="hidden" name="bill" value="<?php echo $id; ?>"> 
+    					<div class="input-group">
+    						<input class="form-control" name="name" placeholder="Enter Name" maxlength="30" required>
+    						<input class="form-control" name="transport_id" placeholder="Enter Transport ID" maxlength="20" required>
+    						<input class="btn btn-success" type="submit" value="Add">
+    					</div>
+    					
+    				</form>
+    			<?php }else{
+    				$transporter = $transporter->fetch_array();
+    				echo $transporter['transported_by']." [".$transporter['transport_id']."]";
+    			 } ?>
+    		</div>
+    		<?php } ?>
     		
     		<div class="table-responsive mt-5">
     			<table class="table table-bordered text-center">
@@ -87,7 +125,7 @@
     						<td><?php echo $item_name['name']; ?></td>
     						<td><?php echo $row['quantity']; ?></td>
     						<td>
-    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to remove item ? ")){ location.href="delete_bill_item.php?id=<?php echo $row['id']; ?>"; }'><i class="fas fa-minus-circle"></i> Remove Item</button> 
+    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to remove item ? ")){ location.href="delete_bill_item.php?id=<?php echo $row['id']; ?>"; }'><i class="fas fa-minus-circle"></i> Remove</button> 
     						</td>
     					</tr>
     					<?php } ?>
@@ -105,7 +143,7 @@
     						<td><?php echo $item_name['name']; ?> (Kit)</td>
     						<td><?php echo $row['quantity']; ?></td>
     						<td>
-    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to remove item ? ")){ location.href="delete_bill_kit.php?id=<?php echo $row['id']; ?>"; }'><i class="fas fa-minus-circle"></i> Remove Kit</button> 
+    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to remove item ? ")){ location.href="delete_bill_kit.php?id=<?php echo $row['id']; ?>"; }'><i class="fas fa-minus-circle"></i> Remove</button> 
    	 						</td>
     						
     					</tr>
@@ -117,11 +155,48 @@
     						<td colspan="4" class="text-center">
     							<button class="btn btn-success" onclick="document.getElementById('add_more_item').style.display ='block'"><i class="fas fa-plus-square"></i> Add Item</button>
     							<button class="btn btn-success" onclick="document.getElementById('add_more_kit').style.display ='block'"><i class="fas fa-plus-square"></i> Add Kit</button>
-    							<button class="btn btn-success" onclick='location.href="replace_item.php?id=<?php echo $id; ?>"'><i class="fas fa-exchange-alt"></i> Replace Item</button>
+    							<button class="btn btn-success" onclick='location.href="replace_item.php?id=<?php echo $id; ?>"'><i class="fas fa-exchange-alt"></i> Replace</button>
     						</td>
     					</tr>
     				</tfoot>
     			</table>
+    			
+    			<table class="table table-bordered text-center">
+    				<thead>
+    					<tr>
+    						<th colspan="5	" class="text-center h6">Replaced Items</th>
+    					</tr>
+        				<tr>
+        					<th>Sr No.</th>
+        					<th>Date</th>
+        					<th>Item</th>
+        					<th>Dispatch</th>
+        					<th>Quantity</th>
+        				</tr>
+    				</thead>
+    				<tbody>
+    					<?php
+    					   $sr = 1;
+    					   while($row = $replaced_items->fetch_array()){
+    					       $item_name = $conn->query("SELECT name from item where id=".$row['item_id']);
+    					       $item_name = $item_name->fetch_array();
+    					?>
+    						<tr>
+    							<td><?php echo $sr++; ?></td>
+    							<td><?php echo date_format(date_create($row['replacement_date']),'dS M Y'); ?></td>
+    							<td><?php echo $item_name['name']; ?></td>
+    							<td>
+    								<?php echo $row['dispatched'] == 0 ? 'Yet to Deliver' : 'Delivered'; ?>
+    								<button class="btn btn-link p-1" onclick='if(confirm("Do You Want to change delivery Status ?")){location.href="update_replacement_delivery_status.php?id=<?php echo $row['id']; ?>";}'>Change Status</button>
+    							</td>
+    							<td><?php echo $row['quantity']; ?></td>
+    						</tr>
+    					<?php } ?>
+    				</tbody>
+    			</table>
+    			
+    			
+    			
     			<form action="add_item_to_bill.php" class="container card p-3" method="post" id="add_more_item" style="display : none">
     				<datalist id="item_list">
             			<?php while($row = $item_list->fetch_array()){ ?>
@@ -158,4 +233,4 @@
     	<script src="js/font-awesome.js"></script>
     </body>
     <?php include_once 'refuse_connection.php'; ?>
-</html>
+</html> 
