@@ -86,7 +86,8 @@
     		<div class="row">
     			<div class="col-sm-4">
     				<select class="form-select" id="cust_type" onchange='location.href = "view_customer.php?search=<?php echo $search; ?>&type="+document.getElementById("cust_type").value'>		
-    					<option value="retail" <?php if($type == 0){ echo "selected"; } ?> >Retail</option>
+    					<option value="">- - - All Customers - - -</option>
+    					<option value="retail" <?php if($type === 0){ echo "selected"; } ?> >Retail</option>
     					<option value="wholesell" <?php if($type == 1){ echo "selected"; } ?> >Wholesell</option>
     					<option value="fitman" <?php if($type == 2){ echo "selected"; } ?> >Fitman</option>
     				</select>
@@ -117,7 +118,7 @@
     					<?php while($row = $customer->fetch_array()){ ?>
     					<tr>
     						<td><?php echo $srno++; ?></td>
-    						<td><?php echo $row['name']; ?></td>
+    						<td><a href="view_customer_bill.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
     						<td><?php echo $row['mobile']; ?></td>
     						<td><?php echo $row['email']; ?></td>
     						<td>
