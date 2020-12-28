@@ -6,7 +6,9 @@
         $msg = $_GET['msg'];
     }
     $conn = getConn();
-    $replacement = $conn->query("SELECT item_id,SUM(quantity)'quantity' FROM replaced_items GROUP BY item_id");
+    $incoming_stock = $conn->query("SELECT id,supplier_id,date_time from incoming_stock where date_time='".date('Y-m-d')."'");
+    $srno = 1;
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@
         <link href="css/font-awesome.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="UTF-8">
-        <title>View Replacement Stock</title>
+        <title>View Incoming Stock</title>
     </head>
     <body>
     	<header class="container-fluid p-4 h4 bg-warning text-black font-monospace m-0" style="min-height: 5vh"><i class="fas fa-car"></i> New Maruti Auto Gas <i class="fas fa-layer-group"></i></header>
@@ -23,30 +25,32 @@
     	<?php include 'navbar.php'; ?>
     	
     	<div class="container-fluid p-4" style="min-height: 92vh">
-    		<h3 class="text-center">Replacement Stock</h3>
+    		<h3 class="text-center">Today Bills</h3>
     		<hr class="bg-primary">
     		<div class="table-responsive">
     			<table class="table table-bordered text-center">
     				<thead>
         				<tr>
-        					<th>Item</th>
-        					<th>Quantity</th>
+        					<th>Sr No.</th>
+        					<th>Name</th>
+        					<th>Date</th>
         					<th>Action</th>
         				</tr>
     				</thead>
     				<tbody>
     					
     					<?php 
-            				while($row = $replacement->fetch_array()){
-            				    $item_name = $conn->query("SELECT name from item where id=".$row['item_id']);
-            				    $item_name = $item_name->fetch_array();
-            			        
+            				while($row = $incoming_stock->fetch_array()){
+            			        $supplier_name = $conn->query("SELECT name from supplier where id=".$row['supplier_id']);
+            			        $supplier_name = $supplier_name->fetch_array();
             		    ?>
     					<tr>
-    						<td><?php echo $item_name['name']; ?></td>
-    						<td><?php echo $row['quantity']; ?></td>
+    						<td><?php echo $srno++; ?></td>
+    						<td><?php echo $supplier_name['name']; ?></td>
+    						<td><?php echo date_format(date_create($row['date_time']),"d M Y"); ?></td>
     						<td>
-    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to remove replacement stock from warehouse for <?php echo $item_name['name']; ?> ?")){ location.href="delete_replacement.php?id=<?php echo $row['item_id']; ?>"; }'>Sattle <i class="fas fa-external-link-alt"></i></button>
+    							<button class="btn btn-link p-0 text-decoration-none" onclick='location.href="view_incoming_stock_items.php?id=<?php echo $row['id']; ?>";'>View Items <i class="fas fa-eye"></i></button> |
+    							<button class="btn btn-link p-0 text-decoration-none" onclick='if(confirm("Do you want to delete <?php  ?>?")){ location.href="delete_stock.php?id=<?php echo $row['id']; ?>";}'>Delete <i class="fas fa-trash-alt"></i></button>
     						</td>
     					</tr>
     					<?php } ?>
