@@ -66,14 +66,14 @@
     		<h6>Customer Name : <?php echo $customer['name']; ?></h6>
     		<h6>Date : <?php echo date_format(date_create($bill['purchase_date']),'dS M Y'); ?></h6>
     		
-    		<div class="table-responsive">
+    		<div class="table-responsive mt-3">
     			<table class="table table-bordered">
     				<thead>
     					<tr>
-    						<td>Sr No.</td>
-    						<td>Item Name</td>
-    						<td>Total Item</td>
-    						<td>Quantity</td>
+    						<th>Sr No.</th>
+    						<th>Item Name</th>
+    						<th>Total Item</th>
+    						<th>Quantity</th>
     					</tr>
     				</thead>
     				<tbody>

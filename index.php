@@ -49,13 +49,10 @@
 				      $wholeseller_string[-1] = " ";
 				      $bills = $conn->query("SELECT id FROM bill where customer_id IN($wholeseller_string)");
 				      $bills_array = $bills->fetch_all();
-				      $bills_string = "";
 				      $bill_count = 0;
-				      foreach($bills_array as $key=>$value){
+				      foreach($bills_array as $value){
 				          $bill_count++;
-				          $bills_string .= $bills_array[$key][0].",";
 				      }
-				      $bills_string[-1] = " ";
 				      $bill_transporter = $conn->query("SELECT count(id)'quantity' FROM bill_transporter");
 				      $bill_transporter = $bill_transporter->fetch_array();
 				      $diff = $bill_count - $bill_transporter['quantity'];
@@ -66,14 +63,76 @@
         				<?php echo $diff; ?>
         			</h3>
         			<hr>
-    				<h4 class="mb-3?>">BILLS WITH PENDING DEIVERIES</h4>
+    				<h4 class="mb-3">BILLS WITH PENDING DEIVERIES</h4>
+    			</div>
+    		</div>
+    		
+    		<div class="col-4 p-2 text-center">
+    			
+    			<?php 
+				      $replacement_pending_delivery = $conn->query("SELECT count(*)'quantity' from replaced_items WHERE dispatched = 0");
+				      $replacement_pending_delivery = $replacement_pending_delivery->fetch_array();
+				?>
+    			
+    			<div class="card p-4 border-3 <?php if($replacement_pending_delivery['quantity'] > 0) echo "text-danger"; else echo "text-primary"; ?>" onclick='location.href="view_undispatched_replacement.php";'>
+    				<h3 class="mt-3">
+        				<?php echo $replacement_pending_delivery['quantity']; ?>
+        			</h3>
+        			<hr>
+    				<h4 class="mb-3">REPLACEMENT WITH PENDING DEIVERIES</h4>
+    			</div>
+    		</div>
+    		
+    		<div class="col-4 p-2 text-center">
+    			
+    			<?php 
+				      $replacements = $conn->query("SELECT count(item_id)'quantity' from replaced_items GROUP BY item_id");
+				?>
+    			
+    			<div class="card p-4 border-3 <?php if(mysqli_num_rows($replacements) > 0) echo "text-danger"; else echo "text-primary"; ?>" onclick='location.href="view_replacement.php";'>
+    				<h3 class="mt-3">
+        				<?php echo mysqli_num_rows($replacements); ?>
+        			</h3>
+        			<hr>
+    				<h4 class="mb-3">REPLACEMENT ITEMS ARE IN WAREHOUSE</h4>
+    			</div>
+    		</div>
+    		
+    		<div class="col-4 p-2 text-center">
+    			
+    			<?php 
+    			     $current_date = date('Y-m-d');
+    			     $bill = $conn->query("SELECT count(id)'quantity' from bill where purchase_date = '$current_date'");
+    			     $bill = $bill->fetch_array();
+				?>
+    			
+    			<div class="card p-4 border-3 <?php if($bill['quantity'] == 0) echo "text-danger"; else echo "text-success"; ?>" onclick='location.href="view_today_bill.php";'>
+    				<h3 class="mt-3">
+        				<?php echo $bill['quantity']; ?>
+        			</h3>
+        			<hr>
+    				<h4 class="mb-3">BILLS GENERATED TODAY</h4>
+    			</div>
+    		</div>
+    		
+    		<div class="col-4 p-2 text-center">
+    			
+    			<?php 
+    			     $stock = $conn->query("SELECT count(id)'quantity' from incoming_stock where date_time = '$current_date'");
+    			     $stock = $stock->fetch_array();
+				?>
+    			
+    			<div class="card p-4 border-3 <?php if($stock['quantity'] == 0) echo "text-danger"; else echo "text-success"; ?>" onclick='location.href="view_today_stock.php";'>
+    				<h3 class="mt-3">
+        				<?php echo $stock['quantity']; ?>
+        			</h3>
+        			<hr>
+    				<h4 class="mb-3">STOCKS ADDED TODAY</h4>
     			</div>
     		</div>
     		
     	</div>
     	
-    	<div class="container-fluid" style="min-height: 92vh">
-    	</div>
     	<script src="js/bootstrap.bundle.js"></script>
     	<script src="js/font-awesome.js"></script>
     </body>
