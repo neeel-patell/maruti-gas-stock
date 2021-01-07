@@ -1,10 +1,6 @@
 <?php
     include 'check_login.php';
     include_once 'connection.php';
-    $msg = "";
-    if(isset($_GET['msg'])){
-        $msg = $_GET['msg'];
-    }
     $conn = getConn();
     $bills_array = array();
     
@@ -23,6 +19,9 @@
         unset($bills_array[$row['bill_id']]);
     }
     $bills_array = implode(",",$bills_array);
+    if($bills_array === ""){
+        $bills_array = -1;
+    }
     $bill_details = $conn->query("SELECT id,customer_id,purchase_date from bill WHERE id IN($bills_array) order by purchase_date DESC");
 ?>
 <!DOCTYPE html>
