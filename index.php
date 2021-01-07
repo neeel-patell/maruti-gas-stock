@@ -46,7 +46,12 @@
 				      foreach($wholeseller_array as $value){
 				          $wholeseller_string .= $value.",";
 				      }
-				      $wholeseller_string[-1] = " ";
+				      if($wholeseller_string !== ""){
+				          $wholeseller_string[-1] = " ";
+				      }
+				      else{
+				          $wholeseller_string = 0;
+				      }
 				      $bills = $conn->query("SELECT id FROM bill where customer_id IN($wholeseller_string)");
 				      $bills_array = $bills->fetch_all();
 				      $bill_count = 0;
@@ -54,8 +59,13 @@
 				          $bill_count++;
 				      }
 				      $bill_transporter = $conn->query("SELECT count(id)'quantity' FROM bill_transporter");
-				      $bill_transporter = $bill_transporter->fetch_array();
-				      $diff = $bill_count - $bill_transporter['quantity'];
+				      if(mysqli_num_rows($bill_transporter) != 0){
+				          $bill_transporter = $bill_transporter->fetch_array();
+				          $diff = $bill_count - $bill_transporter['quantity'];
+				      }
+				      else{
+				          $diff = 0;
+				      }
 				?>
     			
     			<div class="card p-4 border-3 <?php if($diff > 0) echo "text-danger"; else echo "text-primary"; ?>" onclick='location.href="view_undispatched_bill.php";'>
